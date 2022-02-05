@@ -9,12 +9,21 @@ const typeDefs = gql`
         price: Int
     }
 
+    type User {
+        _id: ID
+        username: String
+        email: String
+        password: String
+    }
+
     type Query {
         getProducts: [Product]
+        getUsers: [User]
     }
 
     type Mutation {
         addProduct(name: String!, category: String!, image: String!, price: Int!): Product
+        addUser(username: String!, email: String!, password: String!): User
     }
 `;
 
