@@ -21,6 +21,11 @@ const userSchema = new Schema({
         required: true,
         minlength: 5
     }
+},
+{
+    toJSON: {
+        virtuals: true
+    }
 });
 
 userSchema.pre('save', function(next) {
@@ -31,8 +36,10 @@ userSchema.pre('save', function(next) {
     next();
 });
 
-userSchema.methods.isCorrectPassword = async function (password) {
-    return bcrypt.compare(password, this.password);
+userSchema.methods.isCorrectPassword = function(password) {
+    return bcrypt.compareSync(password, this.password);
 };
 
-module.exports = models.User || model('User', userSchema);
+const User = models.User || model('User', userSchema);
+
+export default User;
