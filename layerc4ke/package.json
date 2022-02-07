@@ -11,6 +11,7 @@
     "@apollo/client": "^3.5.8",
     "apollo-server-micro": "^3.6.2",
     "bcrypt": "^5.0.1",
+    "dotenv": "^16.0.0",
     "graphql": "^16.3.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.2.0",

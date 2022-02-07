@@ -22,6 +22,7 @@ const typeDefs = gql`
     }
 
     type Query {
+        me: User
         getProducts: [Product]
         getUsers: [User]
     }
