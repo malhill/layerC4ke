@@ -4,4 +4,9 @@
 npx create-next-app
 npm i
 gutted index.js
-converted js -> jsx (typscript)
+
+###
+Deleted Header component and simplified app.js
+* adding styled components to make css cool (lol)
+* almost broke the app lmao
+Added a contact page

@@ -1,13 +1,12 @@
 import Head from 'next/head';
 
-export default function Home() {
+export default function Contact() {
   return (
     <section>
       <Head>
-        <title>Home - Layer C4ke</title>
+        <title>Contact Us</title>
       </Head>
-      <h2>Home Page</h2>
+      <h2>Contact Page</h2>
     </section>
   )
 };
-
