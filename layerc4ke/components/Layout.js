@@ -1,10 +1,17 @@
+import { ThemeProvider } from 'styled-components'
 import Link from 'next/link'
 import Header from './Header'
 import { Nav } from '../styles/Nav.styled'
+import GlobalStyles from '../styles/global'
+
+const theme = {
+}
 
 export default function Layout({ children }) {
     return (
+        <ThemeProvider theme ={theme}>
         <>  
+            <GlobalStyles />
             <Header />
             <Nav>
             <Link href="/index">Home</Link>
@@ -13,7 +20,8 @@ export default function Layout({ children }) {
             <Link href="/cart">Cart</Link>
             <Link href="/contact">Contact Us</Link>
             </Nav>
-            <h1>Hello from LayoutJS ^</h1>
         </>
+        </ThemeProvider>
+
     )
 };

@@ -5,10 +5,11 @@ export const StyledHeader = styled.header`
     padding: 40px 0;
 
     h1 {
-        color: red;
+        color: #41A8DA;
     }
 
     &:hover {
-        background-color: black;
+        background-color: #F55C8C;
     }
+
 `

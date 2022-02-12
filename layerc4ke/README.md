@@ -8,9 +8,9 @@ npm i
 gutted index.js
 
 ### Front End Notes
-Deleted Header component and simplified app.js
-* adding styled components to make css cool-er (lol)
+* modified Header component and simplified app.js
+* adding styled components to make css cool-er (lol) [https://www.youtube.com/watch?v=02zO0hZmwnw]
 * almost broke the app lmao
-Added a contact page 
+* added a contact page 
 
 ### Back End Notes
