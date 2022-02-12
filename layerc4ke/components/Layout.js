@@ -1,6 +1,5 @@
 import { ThemeProvider } from 'styled-components'
 import Link from 'next/link'
-import Header from './Header'
 import { Nav } from '../styles/Nav.styled'
 import GlobalStyles from '../styles/global'
 
@@ -12,7 +11,6 @@ export default function Layout({ children }) {
         <ThemeProvider theme ={theme}>
         <>  
             <GlobalStyles />
-            <Header />
             <Nav>
             <Link href="/index">Home</Link>
             <Link href="/products">Products</Link>
