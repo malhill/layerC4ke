@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { Nav } from '../styles/Nav.styled'
 
+// Navbar is being rendered inside of Header.js component
 
 export default function Navbar() {
     return (
