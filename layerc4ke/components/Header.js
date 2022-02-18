@@ -3,10 +3,11 @@ import Nav from './Navbar'
 
 export default function Header() {
     return (
-        <StyledHeader>
-            <h1>Layer C4ke</h1>
+        <div>
+            <StyledHeader>
+                <h1>Layer C4ke</h1>
+            </StyledHeader>
             <Nav />
-        </StyledHeader>
-        
+        </div> 
     )
 }
