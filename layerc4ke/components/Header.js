@@ -1,4 +1,5 @@
 import { StyledHeader } from '../styles/Header.styled'
+import Link from 'next/link'
 import Image from 'next/image'
 import Nav from './Navbar'
 

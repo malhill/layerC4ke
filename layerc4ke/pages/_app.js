@@ -8,7 +8,7 @@ import Layout from '../components/Layout'
 const theme = {
   colors: {
     header: '',
-    body: '#F55C8C',
+    body: '#Ffff',
     footer: ''
   },
 }
