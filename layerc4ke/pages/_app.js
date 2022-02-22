@@ -1,9 +1,7 @@
-// Rendering Header, NavBar, and GlobalStyles inside of Layout.js component
-// import Header from '../components/Header'
-// import Navbar from '../components/Navbar'
-// import GlobalStyles from '../styles/global'
 import { ThemeProvider } from 'styled-components'
 import Layout from '../components/Layout'
+import { ApolloProvider } from '@apollo/client'
+import client from '../config/apollo-client'
 
 const theme = {
   colors: {
@@ -15,11 +13,13 @@ const theme = {
 
 function MyApp({ Component, pageProps }) {
   return (
-    <ThemeProvider theme={theme}>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
-    </ThemeProvider>
+    <ApolloProvider client={client}>
+      <ThemeProvider theme={theme}>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </ThemeProvider>
+    </ApolloProvider>
   )
 }
 

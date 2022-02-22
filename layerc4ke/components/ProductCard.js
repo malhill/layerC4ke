@@ -5,9 +5,9 @@ export default function ProductCard({ inventory }) {
     return (
         <Card>
             {inventory.map(item => (
-                <div className="card-container" key={item.id}>
+                <div className="card-container" key={item.name}>
                     <h2>{item.name}</h2>
-                    <Image src={`/images/${item.image}`} width={300} height={200} />
+                    <Image src={`/images/${item.image}`} width={400} height={400} />
                     <p>${item.price}</p>
                 </div>
             ))}
