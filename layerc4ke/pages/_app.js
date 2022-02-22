@@ -6,7 +6,7 @@ import client from '../config/apollo-client'
 const theme = {
   colors: {
     header: '',
-    body: '#F55C8C',
+    body: '#Ffff',
     footer: ''
   },
 }

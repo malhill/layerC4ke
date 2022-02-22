@@ -7,8 +7,8 @@ export const Card = styled.div`
     row-gap: 50px;
 
     .card-container {
-        background: orange;
-        border-radius: 6px;
+        background: #41A8DA;
+        border-radius: 20px;
         width: 350px;
         padding: 10px 20px;
         display: flex;
@@ -17,10 +17,10 @@ export const Card = styled.div`
     }
 
     h2 {
-        color: white;
+        color: #F55C8C;
     }
 
     img {
-        border-radius: 20px;
+        border-radius: 30px;
     }
 `;
