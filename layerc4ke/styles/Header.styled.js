@@ -1,20 +1,18 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 export const StyledHeader = styled.header`
-    background-color: #ebfbff;
-    padding: 40px 0;
+  background-color: #ebfbff;
+  padding: 40px 0;
+  transition: 300ms;
+  padding: 10px 20px;
+
+  h1 {
+    color: #41a8da;
+    display: inline;
+  }
+
+  &:hover {
+    background-color: #f55c8c;
     transition: 300ms;
-    padding: 10px 20px;
-
-
-    h1 {
-        color: #41A8DA;
-        display: inline;
-    }
-
-    &:hover {
-        background-color: #F55C8C;
-        transition: 300ms;
-    }
-
-`
+  }
+`;
