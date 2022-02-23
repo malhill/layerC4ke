@@ -12,7 +12,10 @@ export const StyledHeader = styled.header`
   }
 
   &:hover {
-    background-color: #f55c8c;
+    background-color: #f9d5e1;
     transition: 300ms;
   }
 `;
+
+// original red trim color
+// #f55c8c

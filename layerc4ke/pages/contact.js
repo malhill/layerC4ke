@@ -13,7 +13,7 @@ export default function Contact() {
       {/* Form Breakdown (In the Works!) */}
       {/* Create Grid Here */}
       <div>
-        
+
         {/* Basic Schedule */}
         <div>
           <b>
@@ -52,7 +52,7 @@ export default function Contact() {
                   id="fullName"
                   name="fullName"
                   class="form-control"
-                  placeholder="Enter your full name"
+                  placeholder="John Doe"
                 />
               </label>
             </div>
@@ -69,7 +69,7 @@ export default function Contact() {
                 id="email"
                 name="email"
                 class="form-control"
-                placeholder="Enter your email address"
+                placeholder="JohnDoe@email.com"
               />
             </label>
           </div>
@@ -87,7 +87,7 @@ export default function Contact() {
                 row="8"
                 col="4"
                 class="form-control"
-                placeholder="Enter your message"
+                placeholder="Text questions here"
               ></textarea>
             </label>
           </div>
@@ -97,7 +97,7 @@ export default function Contact() {
         <div class="form-row">
           <div class="col">
             <button class="btn btn-success" type="submit">
-              Send
+              Send Inquiry
             </button>
           </div>
         </div>
