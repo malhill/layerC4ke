@@ -24,6 +24,9 @@ const productSchema = new Schema(
       type: String,
       required: true,
     },
+    sizes: {
+      type: [String]
+    }
   },
   {
     toJSON: { getters: true },

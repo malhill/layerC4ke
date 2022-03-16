@@ -1,8 +1,7 @@
 import { ThemeProvider } from "styled-components";
-import Layout from "../components/Layout";
+import Layout from "../components/Layout"; // Page Component
 import { ApolloProvider } from "@apollo/client";
-import client from "../config/apollo-client";
-// import 'bootstrap/dist/css/bootstrap.css'
+import withData from '../lib/withData';
 
 const theme = {
   colors: {
@@ -12,9 +11,9 @@ const theme = {
   },
 };
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps, apollo }) {
   return (
-    <ApolloProvider client={client}>
+    <ApolloProvider client={apollo}>
       <ThemeProvider theme={theme}>
         <Layout>
           <Component {...pageProps} />
@@ -24,4 +23,13 @@ function MyApp({ Component, pageProps }) {
   );
 }
 
-export default MyApp;
+MyApp.getInitialProps = async function ({ Component, ctx }) {
+  let pageProps = {};
+  if (Component.getInitialProps) {
+    pageProps = await Component.getInitialProps(ctx);
+  }
+  pageProps.query = ctx.query;
+  return { pageProps };
+}
+
+export default withData(MyApp);

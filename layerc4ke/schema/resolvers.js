@@ -23,6 +23,14 @@ const resolvers = {
         console.log(err);
       }
     },
+    getProductById: async (parent, { _id }) => {
+      try {
+        const product = await Product.findOne({ _id });
+        return product;
+      } catch (err) {
+        console.log(err);
+      }
+    },
     getUsers: async () => {
       try {
         const users = await User.find({});

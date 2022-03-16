@@ -2,11 +2,11 @@ import Head from "next/head";
 import Card from "../components/ProductCard";
 import dummy from "../config/seeds";
 import { useQuery, gql } from "@apollo/client";
-import inventory from "../config/seeds";
 
 export const ALL_PRODUCTS_QUERY = gql`
   query getProducts {
     getProducts {
+      _id
       name
       category
       price

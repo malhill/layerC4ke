@@ -8,6 +8,7 @@ const typeDefs = gql`
     image: String
     price: Int
     description: String
+    sizes: String
   }
 
   type User {
@@ -25,6 +26,7 @@ const typeDefs = gql`
   type Query {
     me: User
     getProducts: [Product]
+    getProductById(_id: ID!): Product
     getUsers: [User]
   }
 
