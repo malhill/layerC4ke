@@ -8,7 +8,7 @@ const typeDefs = gql`
     image: String
     price: Int
     description: String
-    sizes: String
+    sizes: [String]
   }
 
   type User {
@@ -37,6 +37,7 @@ const typeDefs = gql`
       image: String!
       price: Int!
       description: String!
+      sizes: [String!]
     ): Product
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
