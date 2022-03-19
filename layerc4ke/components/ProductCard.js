@@ -5,15 +5,16 @@ import { Card } from "../styles/ProductCard.styles";
 export default function ProductCard({ inventory }) {
   return (
     <Card>
+      
       {inventory.map((item) => (
-        <div className="card-container" key={item.name}>
-          <Link href={`/product/${item._id}`}>
-            <a>{item.name}</a>
-          </Link>
-          
-          <Image src={`/images/${item.image}`} width={400} height={400} />
-          <p>${item.price}</p>
-        </div>
+        <Link href={`/product/${item._id}`} key={item.name}>
+          <div className="card-container" key={item.name}>
+            <a>{item.name}</a>  
+            <Image src={`/images/${item.image}`} width={400} height={400} />
+            <p>${item.price}</p>
+          </div>
+        </Link>
+        
       ))}
     </Card>
   );

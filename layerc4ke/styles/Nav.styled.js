@@ -13,5 +13,12 @@ export const Nav = styled.div`
     text-decoration: none !important;
     color: #f55c8c;
     font-weight: 700;
+    padding: 7px;
+    border-radius: 7px;
+    transition: background-color 300ms;
+  }
+
+  a:hover {
+    background-color: #f9d5e1;
   }
 `;

@@ -12,6 +12,10 @@ const GlobalStyles = createGlobalStyle`
         font-size: 1.15em;
         margin: 0;
     }
+
+    .layout {
+        margin: 10px;
+    }
     
     p {
         opacity: 0.6;

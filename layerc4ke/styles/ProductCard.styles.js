@@ -5,22 +5,32 @@ export const Card = styled.div`
   display: grid;
   grid-template-columns: auto auto auto auto;
   row-gap: 50px;
+  column-gap: 10px;
 
   .card-container {
-    background: #41a8da;
-    border-radius: 20px;
-    width: 350px;
-    padding: 10px 20px;
+    padding: 20px 20px;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: center; 
+    border-radius: 8px;
+    transition: box-shadow 500ms;
+  }
+
+  .card-container:hover {
+    box-shadow: 0 0 10px rgb(44,168,215);
+    cursor: pointer;
   }
 
   h2 {
     color: #f55c8c;
   }
 
-  img {
-    border-radius: 30px;
+  a {
+    text-decoration: none;
+    color: black;
   }
+
+  /* img {
+    border-radius: 30px;
+  } */
 `;

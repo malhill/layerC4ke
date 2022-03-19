@@ -6,7 +6,7 @@ export default function Layout({ children }) {
     <div>
       <GlobalStyles />
       <Header />
-      <div>{children}</div>
+      <div className="layout">{children}</div>
     </div>
   );
 }
