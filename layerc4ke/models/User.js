@@ -21,6 +21,12 @@ const userSchema = new Schema(
       required: true,
       minlength: 5,
     },
+    cart: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Cart"
+      }
+    ]
   },
   {
     toJSON: {
