@@ -13,10 +13,7 @@ const typeDefs = gql`
 
   type Cart {
     _id: ID
-    productName: String
-    productPrice: Int
-    productImage: String
-    productQuantity: Int
+    products: [Product]
   }
 
   type User {
