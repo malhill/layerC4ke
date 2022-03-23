@@ -1,9 +1,14 @@
 import styled from "styled-components";
 
 export const Card = styled.div`
-  display: flex;
+  /* display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-around; */
+
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 10px;
+  justify-content: space-evenly;
 
   .card-container {
     padding: 20px 20px;
@@ -12,7 +17,6 @@ export const Card = styled.div`
     align-items: center; 
     border-radius: 8px;
     transition: box-shadow 500ms;
-    width: 23%;
   }
 
   .card-container:hover {
