@@ -12,7 +12,6 @@ export default function Home() {
           <Head>
             <title>Home - Layer C4ke</title>
           </Head>
-          <h2>Home Page</h2>
           <Grid>
             <Image src={Logo} width="500px" height="500px"></Image>
             <div>
@@ -20,10 +19,7 @@ export default function Home() {
               <p>LC SHORTS WILL BE BACK SPRING 2022</p>
               <Link href="/products" className="test"><a className="shop-button">Start Shopping</a></Link>
             </div>
-            
-
           </Grid>
-          
         </section>
       </div>
     </>
