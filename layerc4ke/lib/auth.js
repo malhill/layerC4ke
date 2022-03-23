@@ -10,7 +10,6 @@ module.exports = {
     },
     authMiddleware: function({ req }) {
         let token = req.headers.authorization;
-        console.log('token1:',token)
       
         // separate "Bearer" from "<tokenvalue>"
         if (req.headers.authorization) {
@@ -19,7 +18,6 @@ module.exports = {
             .pop()
             .trim();
         }
-        console.log('token2:',token)
       
         // if no token, return request object as is
         if (!token) {
