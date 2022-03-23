@@ -1,15 +1,15 @@
 import Product from "../models/Product";
 import User from "../models/User";
-const { signToken } = require("../utils/auth");
+const { signToken } = require("../lib/auth");
 const { AuthenticationError } = require("apollo-server-micro");
 
 const resolvers = {
   Query: {
     me: async (parent, args, context) => {
       if (context.user) {
-        const userData = await User.findOne({ _id: context.user._id }).select(
-          "-__v -password"
-        );
+        const userData = await User.findOne({ _id: context.user._id })
+        .select("-__v -password");
+        
         return userData;
       }
 

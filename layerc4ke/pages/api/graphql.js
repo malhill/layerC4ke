@@ -1,16 +1,16 @@
 import { ApolloServer } from "apollo-server-micro";
 import { ApolloServerPluginLandingPageGraphQLPlayground } from "apollo-server-core";
-import { authMiddleware } from "../../utils/auth";
 import resolvers from '../../schema/resolvers';
 import typeDefs from '../../schema/typeDefs';
 import dbConnect from "../../config/dbconnect";
+const { authMiddleware } = require('../../lib/auth');
 
 const apolloServer = new ApolloServer({
   typeDefs,
   resolvers,
+  context: authMiddleware,
   playground: true,
   plugins: [ApolloServerPluginLandingPageGraphQLPlayground()],
-  context: authMiddleware
 });
 
 const startServer = apolloServer.start();
