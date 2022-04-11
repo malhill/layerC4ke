@@ -17,7 +17,7 @@ const resolvers = {
     },
     getProducts: async () => {
       try {
-        const products = await Product.find({});
+        const products = await Product.find().sort({name: "asc"})
         return products;
       } catch (err) {
         console.log(err);
@@ -33,7 +33,7 @@ const resolvers = {
     },
     getUsers: async () => {
       try {
-        const users = await User.find({});
+        const users = await User.find({}).populate("cart");
         return users;
       } catch (err) {
         console.log(err);

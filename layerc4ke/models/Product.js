@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+// import formatMoney from "../lib/formatMoney";
 const { Schema, model, models } = mongoose;
 
 const productSchema = new Schema(
@@ -18,7 +19,7 @@ const productSchema = new Schema(
     },
     price: {
       type: Number,
-      required: true,
+      required: true
     },
     description: {
       type: String,
@@ -26,7 +27,8 @@ const productSchema = new Schema(
     },
     sizes: {
       type: [String]
-    }
+    },
+    quantity: Number
   },
   {
     toJSON: { getters: true },

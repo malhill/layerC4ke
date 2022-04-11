@@ -13,8 +13,9 @@ export const Nav = styled.div`
     text-decoration: none !important;
     color: #f55c8c;
     font-weight: 700;
-    padding: 7px;
-    border-radius: 7px;
+    padding: 7px 20px;
+    border-radius: 7px 15px;
+    border: 3px solid #f9d5e1;
     transition: background-color 300ms;
   }
 

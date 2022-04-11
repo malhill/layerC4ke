@@ -21,7 +21,7 @@ const typeDefs = gql`
     username: String
     email: String
     password: String
-    cart: [Cart!]
+    cart: [Product]
   }
 
   type Auth {

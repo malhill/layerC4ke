@@ -1,6 +1,7 @@
 import { useQuery, gql } from '@apollo/client';
 import Image from 'next/image';
 import { useState } from 'react';
+import formatMoney from '../../lib/formatMoney';
 
 const SINGLE_ITEM_QUERY = gql `
     query getProductById($id: ID!) {
@@ -46,7 +47,7 @@ export default function SingleProduct({ query }) {
             <h1>{data.getProductById.name}</h1>
             <Image src={`/images/${data.getProductById.image}`} width={400} height={400} />
             <p>{data.getProductById.description}</p>
-            <p>{data.getProductById.price}</p>
+            <p>{formatMoney(data.getProductById.price)}</p>
             
             {data.getProductById.sizes[0] &&
                 <form onSubmit={handleSubmit}>
