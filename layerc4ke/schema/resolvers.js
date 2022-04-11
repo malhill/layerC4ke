@@ -34,7 +34,7 @@ const resolvers = {
     },
     getUsers: async () => {
       try {
-        const users = await User.find({}).populate("cart");
+        const users = await User.find().populate("cart");
         return users;
       } catch (err) {
         console.log(err);
@@ -69,6 +69,16 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
+    addToCart: async (parent, { _id }, context) => {
+      if (context.user) {
+        const product = await _id
+        await User.findByIdAndUpdate(
+          { _id: context.user._id },
+          { $push: { cart: product }},
+          { new: true }
+        )
+      }
+    }
   },
 };
 

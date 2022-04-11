@@ -27,6 +27,9 @@ export default function Cart() {
         <title>Cart - Layer C4ke</title>
       </Head>
       <h2>This is {data.me.username}'s cart</h2>
+      <p>{data.me.cart[0].name}</p>
+      <p>{data.me.cart[0].price}</p>
+      <p>{data.me.cart[0].quantity}</p>
     </section>
   );
 }

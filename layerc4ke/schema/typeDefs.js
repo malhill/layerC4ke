@@ -48,11 +48,8 @@ const typeDefs = gql`
     ): Product
 
     addToCart(
-      productName: String!
-      productPrice: Int!
-      productImage: String
-      productQuantity: Int!
-    ): Cart
+      _id: ID!
+    ) : User
 
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth

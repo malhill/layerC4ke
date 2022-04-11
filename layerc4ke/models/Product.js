@@ -28,7 +28,10 @@ const productSchema = new Schema(
     sizes: {
       type: [String]
     },
-    quantity: Number
+    quantity: {
+      type: Number,
+      default: 1
+    }
   },
   {
     toJSON: { getters: true },
