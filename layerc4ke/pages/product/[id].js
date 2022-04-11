@@ -30,12 +30,10 @@ export default function SingleProduct({ query }) {
 
     const handleChange = (event) => {
         setSizeChosen(event.target.value)
-        console.log(event.target.value)
     }
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log(sizeChosen);
 
         // Create Cart Type in schema and add Cart model to database
         // Create Add To Cart mutation in both schema/resolvers

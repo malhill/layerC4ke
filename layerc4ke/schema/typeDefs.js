@@ -9,6 +9,7 @@ const typeDefs = gql`
     price: Int
     description: String
     sizes: [String!]
+    quantity: Int
   }
 
   type Cart {

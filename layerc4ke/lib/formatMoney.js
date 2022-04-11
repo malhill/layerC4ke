@@ -12,7 +12,5 @@ export default function formatMoney(price) {
 
   const formatter = Intl.NumberFormat('en-US', options);
 
-  console.log(formatter.format(price / 100))
-
   return formatter.format(price / 100);
 }

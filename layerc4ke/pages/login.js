@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useMutation, gql} from '@apollo/client';
-import Auth from '../lib/auth.js';
+import frontAuth from '../lib/frontAuth';
 import Link from 'next/link'
 
 export const LOGIN = gql`
@@ -26,7 +26,7 @@ export default function Login() {
         variables: { email: formState.email, password: formState.password },
       });
       const token = mutationResponse.data.login.token;
-      Auth.login(token);
+      frontAuth.login(token);
     } catch (e) {
       console.log(e);
     }
