@@ -1,5 +1,6 @@
 import Product from "../models/Product";
 import User from "../models/User";
+import CartItem from "../models/CartItem";
 const { signToken } = require("../lib/auth");
 const { AuthenticationError } = require("apollo-server-micro");
 
@@ -9,7 +10,10 @@ const resolvers = {
       if (context.user) {
         const userData = await User.findOne({ _id: context.user._id })
         .select("-__v -password")
-        .populate('cart');
+        .populate({
+          path: 'cart',
+          populate: { path: 'product'}
+        });
         
         return userData;
       }
@@ -30,6 +34,14 @@ const resolvers = {
         return product;
       } catch (err) {
         console.log(err);
+      }
+    },
+    getCartItems: async (parent, args) => {
+      try {
+        const items = await CartItem.find().populate('product');
+        return items;
+      } catch (err) {
+        console.log(err)
       }
     },
     getUsers: async () => {
@@ -69,16 +81,20 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-    addToCart: async (parent, { _id }, context) => {
-      if (context.user) {
-        const product = await _id
-        await User.findByIdAndUpdate(
-          { _id: context.user._id },
-          { $push: { cart: product }},
-          { new: true }
-        )
-      }
-    }
+    addCartItem: async (parent, args) => {
+      const Item = await CartItem.create(args);
+      return Item.populate('product');
+    },
+    // addToCart: async (parent, { _id }, context) => {
+    //   if (context.user) {
+    //     const product = await _id
+    //     await User.findByIdAndUpdate(
+    //       { _id: context.user._id },
+    //       { $push: { cart: product }},
+    //       { new: true }
+    //     )
+    //   }
+    // }
   },
 };
 

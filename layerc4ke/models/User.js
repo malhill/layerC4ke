@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, { SchemaTypes } from "mongoose";
 const { Schema, model, models } = mongoose;
 const bcrypt = require("bcrypt");
 
@@ -22,14 +22,14 @@ const userSchema = new Schema(
       minlength: 5,
     },
     cart: {
-      type: [Schema.Types.ObjectId],
-      ref: "Product"
+      type: [SchemaTypes.ObjectId],
+      ref: 'CartItem'
     }
   },
   {
     toJSON: {
       virtuals: true,
-    },
+    }
   }
 );
 

@@ -9,12 +9,12 @@ const typeDefs = gql`
     price: Int
     description: String
     sizes: [String!]
-    quantity: Int
+    stock: Int
   }
 
-  type Cart {
-    _id: ID
-    products: [Product]
+  type CartItem {
+    product: Product
+    quantity: Int
   }
 
   type User {
@@ -22,7 +22,7 @@ const typeDefs = gql`
     username: String
     email: String
     password: String
-    cart: [Product]
+    cart: [CartItem]
   }
 
   type Auth {
@@ -34,6 +34,7 @@ const typeDefs = gql`
     me: User
     getProducts: [Product]
     getProductById(_id: ID!): Product
+    getCartItems: [CartItem]
     getUsers: [User]
   }
 
@@ -47,10 +48,7 @@ const typeDefs = gql`
       sizes: [String!]
     ): Product
 
-    addToCart(
-      _id: ID!
-    ) : User
-
+    addCartItem(product: ID!, quantity: Int) : CartItem
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
   }
