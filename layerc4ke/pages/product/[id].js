@@ -1,63 +1,62 @@
-import { useQuery, gql } from '@apollo/client';
-import Image from 'next/image';
-import { useState } from 'react';
-import formatMoney from '../../lib/formatMoney';
+import { useMutation, gql } from '@apollo/client';
+import SingleProduct from '../../components/SingleProduct';
 
-const SINGLE_ITEM_QUERY = gql `
-    query getProductById($id: ID!) {
-    getProductById(_id: $id) {
-        _id
-        name
-        description
-        price
-        image
-        sizes
+const ADD_TO_CART = gql`
+    mutation addToCart($product: ID!, $quantity: Int!, $size: String) {
+        addToCart(product: $product, quantity: $quantity, size: $size) {
+            cart {
+                product {
+                    name
+                }
+                quantity
+                size
+            }
+        }
     }
-}
 `;
 
-export default function SingleProduct({ query }) {
-    const [sizeChosen, setSizeChosen] = useState("Medium");
+export default function SingleProductPage({ query }) {
+    const [mutationFunction, { data, loading, error }] = useMutation(ADD_TO_CART)
 
-    let id = query.id;
-
-    const { data, loading, error } = useQuery(SINGLE_ITEM_QUERY, {
-        variables: { id: id }
-    });
-
-    if ( loading) return <p>"Loading..."</p>;
-    if (error) return `Error! ${error.message}`;
-
-    const handleChange = (event) => {
-        setSizeChosen(event.target.value)
+    function logCartItem() {
+        console.log('product:',query.id)
+        console.log('quantity:', 1)
+        logSize();
     }
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
+    function getSize() {
+        const sizeChosen = document.getElementById('sizeList');
+        if (!sizeChosen) {
+            return null
+        } else {
+            return sizeChosen.value
+        }
+    }
 
-        // Create Cart Type in schema and add Cart model to database
-        // Create Add To Cart mutation in both schema/resolvers
-        // Run Add To Cart mutation on submit
+    function logSize() {
+        const sizeChosen = document.getElementById('sizeList');
+        console.log('size: ',getSize());
     }
 
     return (
         <div>
-            <h1>{data.getProductById.name}</h1>
-            <Image src={`/images/${data.getProductById.image}`} width={400} height={400} />
-            <p>{data.getProductById.description}</p>
-            <p>{formatMoney(data.getProductById.price)}</p>
-            
-            {data.getProductById.sizes[0] &&
-                <form onSubmit={handleSubmit}>
-                    <select value={sizeChosen} onChange={handleChange}>
-                        {data.getProductById.sizes.map( (size) => (
-                            <option key={size} value={size}>{size}</option>
-                        ))}
-                    </select>
-                    <br></br>
-                    <input type="submit" value="Add To Cart" />
-                </form>
-            }
+            <SingleProduct query={query}/>
+            <button onClick={logCartItem}> Log Cart Item</button>
+            <form onSubmit={e => {
+                e.preventDefault();
+                mutationFunction({
+                    variables: {
+                        product: query.id,
+                        quantity: 1,
+                        size: getSize()
+                    }
+                });
+                window.alert('Product successfully added to cart')
+                window.location.assign('/')
+            }}
+            >
+                <button type='submit'>Add To Cart</button>
+            </form>
         </div>
     )
 }

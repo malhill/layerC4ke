@@ -30,6 +30,9 @@ const productSchema = new Schema(
     },
     stock: {
       type: Number
+    },
+    stripeTestId: {
+      type: String
     }
   },
   {

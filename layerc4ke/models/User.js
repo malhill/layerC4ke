@@ -21,10 +21,24 @@ const userSchema = new Schema(
       required: true,
       minlength: 5,
     },
-    cart: {
-      type: [SchemaTypes.ObjectId],
-      ref: 'CartItem'
-    }
+    cart: [
+      {
+        product: {
+          type: SchemaTypes.ObjectId,
+          ref: 'Product',
+          required: true,
+          unique: true
+        },
+        quantity: {
+          type: Number,
+          default: 1,
+          required: true
+        },
+        size: {
+          type: String
+        }
+      }
+    ]
   },
   {
     toJSON: {

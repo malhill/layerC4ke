@@ -10,11 +10,13 @@ const typeDefs = gql`
     description: String
     sizes: [String!]
     stock: Int
+    stripeTestId: String
   }
 
   type CartItem {
     product: Product
     quantity: Int
+    size: String
   }
 
   type User {
@@ -34,7 +36,6 @@ const typeDefs = gql`
     me: User
     getProducts: [Product]
     getProductById(_id: ID!): Product
-    getCartItems: [CartItem]
     getUsers: [User]
   }
 
@@ -48,9 +49,9 @@ const typeDefs = gql`
       sizes: [String!]
     ): Product
 
-    addCartItem(product: ID!, quantity: Int) : CartItem
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
+    addToCart(product: ID!, quantity: Int!, size: String): User
   }
 `;
 

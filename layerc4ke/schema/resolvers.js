@@ -12,8 +12,8 @@ const resolvers = {
         .select("-__v -password")
         .populate({
           path: 'cart',
-          populate: { path: 'product'}
-        });
+          populate: {path: 'product'}
+        })
         
         return userData;
       }
@@ -36,17 +36,9 @@ const resolvers = {
         console.log(err);
       }
     },
-    getCartItems: async (parent, args) => {
-      try {
-        const items = await CartItem.find().populate('product');
-        return items;
-      } catch (err) {
-        console.log(err)
-      }
-    },
     getUsers: async () => {
       try {
-        const users = await User.find().populate("cart");
+        const users = await User.find().populate("product");
         return users;
       } catch (err) {
         console.log(err);
@@ -81,20 +73,15 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-    addCartItem: async (parent, args) => {
-      const Item = await CartItem.create(args);
-      return Item.populate('product');
-    },
-    // addToCart: async (parent, { _id }, context) => {
-    //   if (context.user) {
-    //     const product = await _id
-    //     await User.findByIdAndUpdate(
-    //       { _id: context.user._id },
-    //       { $push: { cart: product }},
-    //       { new: true }
-    //     )
-    //   }
-    // }
+    addToCart: async (parent, {product, quantity, size}, context) => {
+      if (context.user) {
+        await User.updateOne(
+          { _id: context.user._id },
+          { $push: { cart: {product: product, quantity: quantity, size: size} }},
+          { new: true }
+        )
+      }
+    }
   },
 };
 
