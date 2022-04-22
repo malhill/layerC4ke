@@ -32,5 +32,4 @@ export const Card = styled.div`
     text-decoration: none;
     color: black;
   }
-
 `;

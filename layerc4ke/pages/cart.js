@@ -1,8 +1,11 @@
 import React from "react";
 import Head from "next/head";
 import Image from 'next/image'
+import { Cart } from "../styles/cart.styled";
 import { useQuery, gql } from "@apollo/client";
 import { loadStripe } from '@stripe/stripe-js';
+import formatMoney from '../lib/formatMoney';
+import {FaTrash} from 'react-icons/fa';
 
 export const QUERY_ME = gql`
   query me {
@@ -18,6 +21,7 @@ export const QUERY_ME = gql`
           stripeTestId
         }
         quantity
+        size
       }
     }
   }
@@ -48,38 +52,62 @@ export default function cartPreview() {
   if (error) return `Error! ${error.message}`;
   
   return (
-    <section>
+    <Cart>
       <Head>
         <title>Cart - Layer C4ke</title>
       </Head>
 
-      {data.me.cart.length > 0 &&
-        <div>
-          <h2>This is {data.me.username}'s Cart</h2>
-          {data.me.cart.map( (cartItem) => (
-          <div key={cartItem.product._id}>
-            <p>Name: {cartItem.product.name}</p>
-            <p>Price: {cartItem.product.price}</p>
-            <p>Quanitity: {cartItem.quantity}</p>
-            <Image src={`/images/${cartItem.product.image}`} width={200} height={200} />
+      <div className="page-container">
+        {data.me.cart.length > 0 &&
+          <div className="cart-item-container">
+            <h2>{data.me.email}'s Cart</h2>
+            {data.me.cart.map( (cartItem) => (
+            <div key={cartItem.product._id} className='cart-item'>
+              <Image src={`/images/${cartItem.product.image}`} width={150} height={150} />
+              <div className="col-1">
+                <h3 className="product-info">{cartItem.product.name}</h3>
+                {cartItem.size &&
+                  <p className="product-info">Size: {cartItem.size}</p>
+                }
+              </div>
+
+              <form> 
+                Quantity: <input type="number" min="1" max="10" default={cartItem.quantity}></input>
+              </form>
+              
+              <p className="price">{formatMoney(cartItem.product.price)}</p>
+              <button className="icon-button">
+                <FaTrash className="icon"/>
+              </button>
+            
+            </div>
+          ))} 
           </div>
-        ))}  
-        </div>
-      }
-  
-      {data.me.cart.length === 0 &&
-        <h1>Your cart is empty!</h1>
-      }
-      
-      {data.me.cart.length > 0 &&
-        <form>
-          <section>
-            <button type="submit">
-              Checkout
-            </button>
+        }
+    
+        {data.me.cart.length === 0 &&
+          <h1>Your cart is empty!</h1>
+        }
+        
+        {data.me.cart.length > 0 &&
+          <section className="checkout-container">
+            <div className="total">
+              <div>
+                <h3>Summary</h3>
+                <h4>SubTotal: $$$$</h4>
+                <h4>Taxes: $$$$</h4>
+                <h4>Shipping: Calculated at checkout</h4>
+                <h4>Estimated Total: $$$$</h4>
+              </div>
+              <form className="checkout-form">
+                <button type="submit">
+                  Checkout
+                </button>
+              </form>
+            </div>
           </section>
-        </form>
-      }
-    </section>
+        }
+      </div>
+    </Cart>
   );
 }
