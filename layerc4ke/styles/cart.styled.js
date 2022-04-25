@@ -21,14 +21,6 @@ export const Cart = styled.section`
         flex-grow: 1;
     }
 
-    h2 {
-        background-image: linear-gradient(90deg, red, blue);
-        background-clip: text;
-        -webkit-background-clip: text;
-        color: transparent;
-        width: fit-content;
-    }
-
     .cart-item {
         display: flex;
         border-bottom: 2px solid black;
@@ -46,8 +38,9 @@ export const Cart = styled.section`
     }
 
     .icon-button {
-        background-color: red;
+        background-color: rgb(253,88,141);
         border-radius: 30px;
+        border: none;
         padding: .5em;
     }
 
@@ -68,6 +61,21 @@ export const Cart = styled.section`
         flex-direction: column;
         align-items: center;
         padding: .7em 1.5em;
+    }
+
+    table {
+        margin-bottom: .5em;
+    }
+
+    caption {
+        margin-bottom: .5em;
+        text-decoration: underline;
+        font-size: 1.2em;
+        color: rgb(253,88,141);
+    }
+
+    th, td {
+        padding: 1em;
     }
 
     .checkout-form {
