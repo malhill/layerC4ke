@@ -92,13 +92,25 @@ export default function cartPreview() {
         {data.me.cart.length > 0 &&
           <section className="checkout-container">
             <div className="total">
-              <div>
-                <h3>Summary</h3>
-                <h4>SubTotal: $$$$</h4>
-                <h4>Taxes: $$$$</h4>
-                <h4>Shipping: Calculated at checkout</h4>
-                <h4>Estimated Total: $$$$</h4>
-              </div>
+              <table>
+                <caption>Summary</caption>
+                <tr>
+                  <th>SubTotal</th>
+                  <td>$$$$</td>
+                </tr>
+                <tr>
+                  <th>Taxes</th>
+                  <td>$$$$</td>
+                </tr>
+                <tr>
+                  <th>Shipping</th>
+                  <td>$$$$</td>
+                </tr>
+                <tr>
+                  <th>Total</th>
+                  <td>$$$$</td>
+                </tr>
+              </table>
               <form className="checkout-form">
                 <button type="submit">
                   Checkout
