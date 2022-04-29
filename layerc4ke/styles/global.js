@@ -20,11 +20,23 @@ const GlobalStyles = createGlobalStyle`
     h1 {
         font-size: 2em;
     }
+
+    h2 {
+        font-size: 1.75em;
+    }
+
+    h3 {
+        font-size: 1.4em;
+    }
     
     p {
         opacity: 0.6;
         line-height: 1.5;
-        font-size: 1.5em;
+        font-size: 1.25em;
+    }
+
+    a {
+        font-weight: 700;
     }
 `;
 

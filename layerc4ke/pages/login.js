@@ -42,8 +42,8 @@ export default function Login() {
   };
 
   return (
-    <LoginStyles className="card-container">
-      <div className="card login-container">
+    <LoginStyles>
+      <div>
         <h2>Login</h2>
         <form onSubmit={handleFormSubmit}>
           <div>
@@ -55,7 +55,7 @@ export default function Login() {
               onChange={handleChange}
             />
           </div>
-          <div className="flex-row space-between my-2">
+          <div>
             <input
               placeholder="Your password"
               name="password"
@@ -71,7 +71,7 @@ export default function Login() {
             </div>
           ) : null} */}
 
-          <div className="flex-row flex-end">
+          <div>
             <button type="submit" className='login'>Login</button>
           </div>
         </form>

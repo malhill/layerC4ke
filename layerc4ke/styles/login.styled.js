@@ -1,46 +1,45 @@
 import styled from 'styled-components';
 
 export const LoginStyles = styled.section`
-    flex-grow: 1;
     text-align: center;
     font-size: 2em;
     padding: 1em;
+    margin-top: .5em;
+    background-color: rgb(44,168,215);
+    border: 3px solid rgb(250,89,142);
+    box-shadow: 0 0 5px 5px inset white;
+    border-radius: 10px;
     
     h2 {
         margin: 0;
-        color: rgb(253,88,141);
+        color: white;
         text-decoration: underline;
     }
 
     input {
         border: none;
-        border-bottom: 1px solid rgb(0,0,0, .4);
-        font-size: 1em;
+        font-size: .9em;
         margin-top: 2em;
-        padding: .5em;
+        padding: .5em 1em;
+        border-radius: 40px;
     }
 
     .login {
         display: inline;
         padding: 1em 1em;
-        background-color: rgb(43, 168, 215);
+        background-color: white;
         border: none;
         border-radius: 7px;
         font-weight: bolder;
-        color: white;
-        opacity: .6;
-        transition: opacity .5s;
+        color: rgb(44,168,215);
         font-size: .8em;
         margin-top: 2em;
+        transition: transform 1s;
     }
 
     .login:hover {
-        opacity: 1;
         cursor: pointer;
-    }
-
-    .close {
-        font-size: 30px;
+        transform: scale(1.02)
     }
 
     .close {
@@ -51,6 +50,7 @@ export const LoginStyles = styled.section`
         border: none;
         color: red;
         font-weight: bolder;
+        font-size: 30px;
     }
 
     .close:hover {

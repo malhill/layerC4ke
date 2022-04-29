@@ -2,10 +2,13 @@ import React from "react";
 import Head from "next/head";
 import Image from 'next/image'
 import { Cart } from "../styles/cart.styled";
+import CartTable from "../components/CartTable";
 import { useQuery, gql } from "@apollo/client";
 import { loadStripe } from '@stripe/stripe-js';
 import formatMoney from '../lib/formatMoney';
 import {FaTrash} from 'react-icons/fa';
+import { cartTotal, getTotal } from "../lib/cartLogic";
+import { taxEstimate } from "../lib/cartLogic";
 
 export const QUERY_ME = gql`
   query me {
@@ -59,30 +62,7 @@ export default function cartPreview() {
 
       <div className="page-container">
         {data.me.cart.length > 0 &&
-          <div className="cart-item-container">
-            <h2>{data.me.email}'s Cart</h2>
-            {data.me.cart.map( (cartItem) => (
-            <div key={cartItem.product._id} className='cart-item'>
-              <Image src={`/images/${cartItem.product.image}`} width={150} height={150} />
-              <div className="col-1">
-                <h3 className="product-info">{cartItem.product.name}</h3>
-                {cartItem.size &&
-                  <p className="product-info">Size: {cartItem.size}</p>
-                }
-              </div>
-
-              <form> 
-                Quantity: <input type="number" min="1" max="10" default={cartItem.quantity}></input>
-              </form>
-              
-              <p className="price">{formatMoney(cartItem.product.price)}</p>
-              <button className="icon-button">
-                <FaTrash className="icon"/>
-              </button>
-            
-            </div>
-          ))} 
-          </div>
+          <CartTable user={data.me} />
         }
     
         {data.me.cart.length === 0 &&
@@ -94,22 +74,25 @@ export default function cartPreview() {
             <div className="total">
               <table>
                 <caption>Summary</caption>
-                <tr>
-                  <th>SubTotal</th>
-                  <td>$$$$</td>
-                </tr>
-                <tr>
-                  <th>Taxes</th>
-                  <td>$$$$</td>
-                </tr>
-                <tr>
-                  <th>Shipping</th>
-                  <td>$$$$</td>
-                </tr>
-                <tr>
-                  <th>Total</th>
-                  <td>$$$$</td>
-                </tr>
+                <tbody>
+                  <tr>
+                    <th>SubTotal</th>
+                    <td>{formatMoney(cartTotal(data.me.cart))}</td>
+                  </tr>
+                  <tr>
+                    <th>Taxes</th>
+                    <td>{formatMoney(taxEstimate(cartTotal(data.me.cart)))}</td>
+                  </tr>
+                  <tr>
+                    <th>Shipping</th>
+                    <td>Estimated at checkout</td>
+                  </tr>
+                  <tr>
+                    <th>Total</th>
+                    <td>{formatMoney(getTotal(cartTotal(data.me.cart), taxEstimate(cartTotal(data.me.cart))))}</td>
+                  </tr>
+                </tbody>
+                
               </table>
               <form className="checkout-form">
                 <button type="submit">

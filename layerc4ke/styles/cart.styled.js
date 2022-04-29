@@ -1,60 +1,34 @@
 import styled from "styled-components";
 
 export const Cart = styled.section`
-    font-weight: bold;
     display: flex;
     justify-content: center;
-    padding: 2em 2em;
-    border: 5px solid black;
-    flex-grow: 1;
+    padding: 1em;
+    flex: 1;
+    max-width: 90%;
+
+    p {
+        font-size: 1em;
+        opacity: 1;
+    }
 
     .page-container {
         display: flex;
-        flex-grow: 1;
-        column-gap: 5em;
-        border: 5px solid blue;
-    }
-
-    .cart-item-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        row-gap: 1.2em;
-        flex-grow: 1;
-    }
-
-    .cart-item {
-        display: flex;
-        border-bottom: 2px solid black;
-        column-gap: 2em;
-        align-items: center;
-        font-size: 1.2em;
-        padding: 0 1.5em;
-        max-width: 55%;
-        min-width: fit-content;
-    }
-
-    .icon {
-        font-size: 2em;
-        color: white;
-    }
-
-    .icon-button {
-        background-color: rgb(253,88,141);
-        border-radius: 30px;
-        border: none;
-        padding: .5em;
-    }
-
-    .col-1, .product-info, form, .price {
-        width: 10em;
-        flex-grow: 1;
+        justify-content: center;
+        flex-wrap: wrap;
+        flex: 1;
     }
 
     .checkout-container {
+        position: sticky;
+        top: 10rem;
+        align-self: start;
         display: flex;
         align-items: center;
+        justify-content: center;
         flex-grow: 1;
+        flex-basis: 30%;
+        margin-top: 2.5em;
     }
 
     .total {
@@ -63,20 +37,23 @@ export const Cart = styled.section`
         flex-direction: column;
         align-items: center;
         padding: .7em 1.5em;
+        width: 65%;
     }
 
-    table {
+    .total table {
+        border-spacing: 5em 1em;
         margin-bottom: .5em;
     }
 
     caption {
         margin-bottom: .5em;
         text-decoration: underline;
-        font-size: 1.2em;
+        font-size: 1.3em;
+        font-weight: bold;
         color: rgb(253,88,141);
     }
 
-    th, td {
+    .total th, td {
         padding: 1em;
     }
 
@@ -86,7 +63,7 @@ export const Cart = styled.section`
     }
 
     .checkout-form button {
-        padding: 1em 2em;
+        padding: 1em 5em;
         background-color: rgb(43, 168, 215);
         border: none;
         border-radius: 7px;
@@ -94,17 +71,11 @@ export const Cart = styled.section`
         color: white;
         opacity: .6;
         transition: opacity .5s;
-    }
-
-    .total h3 {
-        text-align: center;
-        text-decoration: underline;
+        font-size: 1em;
     }
 
     button:hover {
         opacity: 1;
         cursor: pointer;
     }
-
-    
 `

@@ -1,68 +1,52 @@
 import Image from "next/image"
+import formatMoney from "../lib/formatMoney";
 import {FaTrash} from 'react-icons/fa';
 import { CartTableStyles } from "../styles/cartTable.styled";
 
-export default function CartTable() {
+export default function CartTable({ user }) {
     return (
         <CartTableStyles>
             <table>
-                <caption>Test Cart</caption>
+                <caption>{user.email}'s Cart</caption>
                 <thead>
                     <tr>
-                        <th>Image</th>
-                        <th>Info</th>
+                        <th colSpan={2}>Product</th>
                         <th>Quantity</th>
                         <th>Price</th>
-                        <th>Buttons</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td><Image src="/images/Strawjamz_1024x1024@2x.png" height={200} width={200} /> </td>
-                        <td>A Strawberry Jamz<p>Size: Medium</p></td>
-                        <td>1</td>
-                        <td>$19.99</td>
-                        <td>
+                    {user.cart.map( (cartItem) => (
+                        <tr key={cartItem.product._id}>
+                            <td>
+                                <div>
+                                    <Image src={`/images/${cartItem.product.image}`} height={200} width={200} />
+                                    {cartItem.size &&
+                                        <p>{cartItem.size}</p>    
+                                    }
+                                </div>
+                            </td>
+                            <td className="product-name">
+                                <h3>{cartItem.product.name}</h3>
+                            </td>
+                            <td>
+                                <p>{cartItem.quantity}</p>
+                                {/* <form className="quantity">
+                                    <input type="number" min="1" max="10" value={cartItem.quantity}></input>
+                                </form> */}
+                            </td>
+                            <td className="product-price">
+                                <p>{formatMoney(cartItem.product.price)}</p>
+                            </td>
+                            <td>
                             <button className="icon-button">
                                 <FaTrash className="icon"/>
                             </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><Image src="/images/Strawjamz_1024x1024@2x.png" height={200} width={200} /> </td>
-                        <td>A Strawberry Jamz</td>
-                        <td>1</td>
-                        <td>$19.99</td>
-                        <td>
-                            <button className="icon-button">
-                                <FaTrash className="icon"/>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><Image src="/images/Strawjamz_1024x1024@2x.png" height={200} width={200} /> </td>
-                        <td>A Strawberry Jamz</td>
-                        <td>1</td>
-                        <td>$19.99</td>
-                        <td>
-                            <button className="icon-button">
-                                <FaTrash className="icon"/>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><Image src="/images/Strawjamz_1024x1024@2x.png" height={200} width={200} /> </td>
-                        <td>A Strawberry Jamz</td>
-                        <td>1</td>
-                        <td>$19.99</td>
-                        <td>
-                            <button className="icon-button">
-                                <FaTrash className="icon"/>
-                            </button>
-                        </td>
-                    </tr>
-                </tbody>
-                
+                            </td>
+                        </tr>
+                    ))}
+                </tbody>   
             </table>
         </CartTableStyles>
     )
