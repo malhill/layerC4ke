@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useMutation, gql} from '@apollo/client';
 import frontAuth from '../lib/frontAuth';
 import Link from 'next/link'
+import { LoginStyles } from '../styles/login.styled';
 
 export const LOGIN = gql`
   mutation login($email: String!, $password: String!) {
@@ -41,13 +42,13 @@ export default function Login() {
   };
 
   return (
-    <div className="card-container">
+    <LoginStyles className="card-container">
       <div className="card login-container">
         <h2>Login</h2>
         <form onSubmit={handleFormSubmit}>
           <div>
             <input
-              placeholder="youremail@test.com"
+              placeholder="Your email"
               name="email"
               type="email"
               id="email"
@@ -56,7 +57,7 @@ export default function Login() {
           </div>
           <div className="flex-row space-between my-2">
             <input
-              placeholder="******"
+              placeholder="Your password"
               name="password"
               type="password"
               id="pwd"
@@ -71,11 +72,10 @@ export default function Login() {
           ) : null} */}
 
           <div className="flex-row flex-end">
-            <button type="submit">Submit</button>
-            <Link href="/"><button type="button">Sign-up</button></Link>
+            <button type="submit" className='login'>Login</button>
           </div>
         </form>
       </div>
-    </div>
+    </LoginStyles>
   );
 }

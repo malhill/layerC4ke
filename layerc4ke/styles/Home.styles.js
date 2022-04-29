@@ -6,6 +6,7 @@ export const Grid = styled.div`
     align-items: center;
     font-size: 1.5em;
     padding: 5em 0;
+    height: 50vh;
 
     .shop-button {
         background: rgb(44,168,215);

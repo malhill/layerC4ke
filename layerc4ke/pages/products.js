@@ -2,6 +2,7 @@ import Head from "next/head";
 import Card from "../components/ProductCard";
 import dummy from "../config/seeds";
 import { useQuery, gql } from "@apollo/client";
+import { CardStyles } from "../styles/ProductCard.styles";
 
 export const ALL_PRODUCTS_QUERY = gql`
   query getProducts {
@@ -22,13 +23,12 @@ export default function Products() {
   if (error) return `Error! ${error.message}`;
 
   return (
-    <section>
+    <CardStyles>
       <Head>
         <title>Products - Layer C4ke</title>
       </Head>
-      <h2>Products Page</h2>
       {/* Should load dummy data if database isn't connected */}
       <Card inventory={!data.getProducts[0] ? dummy : data.getProducts} />
-    </section>
+    </CardStyles>
   );
 }

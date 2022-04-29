@@ -9,7 +9,7 @@ export const Nav = styled.div`
   padding: 0.5rem calc((100vw - 1000px) / 2);
   z-index: 10;
 
-  a {
+  a, .login-nav {
     text-decoration: none !important;
     color: #f55c8c;
     font-weight: 700;
@@ -19,7 +19,22 @@ export const Nav = styled.div`
     transition: background-color 300ms;
   }
 
-  a:hover {
+  a:hover, .login-nav:hover {
     background-color: #f9d5e1;
+    cursor: pointer;
+  }
+
+  .login-nav {
+    font-size: 1.15em;
+    background-color: rgb(235,251,255);
+  }
+
+  .modal {
+   border: none;
+   box-shadow: 2px 5px 9px black;
+  }
+
+  .modal::backdrop {
+    background-color: rgb(0 0 0 / .7)
   }
 `;

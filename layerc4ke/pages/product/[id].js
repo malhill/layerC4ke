@@ -1,5 +1,6 @@
 import { useMutation, gql } from '@apollo/client';
 import SingleProduct from '../../components/SingleProduct';
+import { Product } from '../../styles/SingleProduct.styled';
 
 const ADD_TO_CART = gql`
     mutation addToCart($product: ID!, $quantity: Int!, $size: String) {
@@ -39,9 +40,9 @@ export default function SingleProductPage({ query }) {
     }
 
     return (
-        <div>
+        <Product>
             <SingleProduct query={query}/>
-            <button onClick={logCartItem}> Log Cart Item</button>
+            {/* <button onClick={logCartItem}> Log Cart Item</button>
             <form onSubmit={e => {
                 e.preventDefault();
                 mutationFunction({
@@ -56,7 +57,7 @@ export default function SingleProductPage({ query }) {
             }}
             >
                 <button type='submit'>Add To Cart</button>
-            </form>
-        </div>
+            </form> */}
+        </Product>
     )
 }

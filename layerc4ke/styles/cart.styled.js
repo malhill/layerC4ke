@@ -5,12 +5,14 @@ export const Cart = styled.section`
     display: flex;
     justify-content: center;
     padding: 2em 2em;
+    border: 5px solid black;
+    flex-grow: 1;
 
     .page-container {
         display: flex;
-        max-width: 65%;
         flex-grow: 1;
         column-gap: 5em;
+        border: 5px solid blue;
     }
 
     .cart-item-container {

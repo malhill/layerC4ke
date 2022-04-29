@@ -16,14 +16,15 @@ const GlobalStyles = createGlobalStyle`
     .layout {
         margin: 10px;
     }
+
+    h1 {
+        font-size: 2em;
+    }
     
     p {
         opacity: 0.6;
         line-height: 1.5;
-    }
-
-    img {
-        max-width: 100%;
+        font-size: 1.5em;
     }
 `;
 
