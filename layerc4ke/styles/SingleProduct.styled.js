@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const Product = styled.section`
     display: grid;
     grid-template-columns: 1fr 1fr;
-    border: 4px solid blue;
     padding: 1em;
     flex-grow: 1;
     max-width: 70%;
@@ -36,7 +35,7 @@ export const Product = styled.section`
     }
 
     select {
-        padding: 2em;
+        padding: 1em;
         width: 50%;
         font-size: 1.2em;
     }
@@ -51,7 +50,7 @@ export const Product = styled.section`
         opacity: .6;
         transition: opacity .5s;
         font-size: 1.2em;
-        margin-top: 1em;
+        max-width: 50%;
     }
 
     button:hover {

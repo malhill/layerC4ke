@@ -5,7 +5,7 @@ export const Cart = styled.section`
     justify-content: center;
     padding: 1em;
     flex: 1;
-    max-width: 80%;
+    max-width: 90%;
 
     p {
         font-size: 1em;

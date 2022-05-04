@@ -21,7 +21,7 @@ export default function CartTable({ user }) {
                         <tr key={cartItem.product._id}>
                             <td>
                                 <div>
-                                    <Image src={`/images/${cartItem.product.image}`} height={200} width={200} />
+                                    <Image src={`/images/${cartItem.product.image}`} width="100%" height="100%" layout="responsive" objectFit="contain" />
                                     {cartItem.size &&
                                         <p>{cartItem.size}</p>    
                                     }

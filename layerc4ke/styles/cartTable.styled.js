@@ -5,7 +5,6 @@ export const CartTableStyles = styled.section`
     justify-content: center;
     flex-basis: 65%;
     margin: 0;
-    width: 100%;
 
     p {
         margin: 0;
