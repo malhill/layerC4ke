@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const CardStyles = styled.section`
   flex-grow: 1;
   padding: 2em 0;
-  max-width: 70%;
+  max-width: 80%;
 
   .product-container {
     display: grid;
@@ -12,13 +12,12 @@ export const CardStyles = styled.section`
   }
 
   .card-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 1em; 
+    display: block;
+    text-align: center;
+    padding: .5em; 
+    row-gap: .5em;
     border-radius: 5px;
     transition: box-shadow 500ms;
-    white-space: nowrap;
   }
 
   .card-container:hover {

@@ -2,7 +2,6 @@ import { useQuery, gql } from '@apollo/client';
 import Image from 'next/image';
 import formatMoney from '../lib/formatMoney';
 
-
 const SINGLE_ITEM_QUERY = gql `
     query getProductById($id: ID!) {
     getProductById(_id: $id) {
@@ -28,14 +27,14 @@ export default function SingleProduct({ query }) {
 
     return (
         <>
-            <Image className='image' src={`/images/${data.getProductById.image}`} width={1024} height={1024} />
+            <div class="image-container">
+                <Image className='image' src={`/images/${data.getProductById.image}`} width="100%" height="100%" layout="responsive" objectFit='contain' />
+            </div>
 
             <div className='product-info'>
                 <h1>{data.getProductById.name}</h1>
-                <p className='price'>{formatMoney(data.getProductById.price)}</p>
                 <p>{data.getProductById.description}</p>
                 
-
                 {data.getProductById.sizes[0] &&
                 <select id='sizeList'>
                     {data.getProductById.sizes.map( (size) => (
@@ -44,9 +43,10 @@ export default function SingleProduct({ query }) {
                 </select>
                 }
 
-
+                <p className='price'>{formatMoney(data.getProductById.price)}</p>
                 {/* Will be adding Redux for state management */}
                 <button className='add-to-cart'>Add To Cart</button>
+                
             </div>
 
         </>

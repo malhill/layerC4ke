@@ -1,16 +1,23 @@
 import styled from "styled-components";
 
 export const Product = styled.section`
-    display: flex;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border: 4px solid blue;
     padding: 1em;
     flex-grow: 1;
     max-width: 70%;
 
+    .image-container {
+        display: block;
+        
+    }
+
     .product-info {
         display: flex;
         flex-direction: column;
-        padding: 1em;
+        justify-content: center;
+        
     }
 
     h1 {
@@ -35,7 +42,6 @@ export const Product = styled.section`
     }
 
     button {
-        display: block;
         padding: 1em 0;
         background-color: rgb(43, 168, 215);
         border: none;
