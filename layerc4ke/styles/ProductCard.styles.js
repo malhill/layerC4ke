@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const CardStyles = styled.section`
   flex-grow: 1;
   padding: 2em 0;
-  max-width: 80%;
 
   .product-container {
     display: grid;
@@ -39,7 +38,11 @@ export const CardStyles = styled.section`
     margin: 0;
   }
 
-  @media only screen and (max-width: 1600px) {
+  @media only screen and (min-width: 2500px) {
+    max-width: 75%;
+  }
+
+  @media only screen and (max-width: 1800px) {
     max-width: 90%;
     .product-container {
       grid-template-columns: 1fr 1fr;

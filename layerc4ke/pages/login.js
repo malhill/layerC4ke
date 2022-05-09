@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useMutation, gql} from '@apollo/client';
 import frontAuth from '../lib/frontAuth';
-import Link from 'next/link'
 import { LoginStyles } from '../styles/login.styled';
 
 export const LOGIN = gql`
@@ -30,6 +29,12 @@ export default function Login() {
       frontAuth.login(token);
     } catch (e) {
       console.log(e);
+      if (formState.email.length < 1) {
+        console.log('please enter a valid email address')
+      } 
+      if (formState.password.length < 1) {
+        console.log("Please enter your password")
+      }
     }
   };
 
@@ -42,8 +47,8 @@ export default function Login() {
   };
 
   return (
-    <LoginStyles>
-      <div>
+    <div>
+      <LoginStyles>
         <h2>Login</h2>
         <form onSubmit={handleFormSubmit}>
           <div>
@@ -55,6 +60,7 @@ export default function Login() {
               onChange={handleChange}
             />
           </div>
+
           <div>
             <input
               placeholder="Your password"
@@ -64,18 +70,15 @@ export default function Login() {
               onChange={handleChange}
             />
           </div>
-
-          {/* {error ? (
-            <div>
-              <p className="error-text">The provided credentials are incorrect</p>
-            </div>
-          ) : null} */}
-
+          
           <div>
             <button type="submit" className='login'>Login</button>
           </div>
         </form>
-      </div>
-    </LoginStyles>
+      </LoginStyles>
+          {error ? (
+            <p className='error-message'>Incorrect credentials</p>
+          ) : null}
+    </div>
   );
 }

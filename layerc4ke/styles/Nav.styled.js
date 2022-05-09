@@ -9,9 +9,11 @@ export const Nav = styled.div`
   padding: 0.5rem calc((100vw - 1000px) / 2);
   z-index: 10;
 
-  a, .login-nav {
+  a, .logout {
     text-decoration: none !important;
     color: #f55c8c;
+    font-size: 1.15em;
+    background-color: rgb(235,251,255);
     font-weight: 700;
     padding: 7px 20px;
     border-radius: 7px 15px;
@@ -19,14 +21,13 @@ export const Nav = styled.div`
     transition: background-color 300ms;
   }
 
-  a:hover, .login-nav:hover {
+  a:hover, .logout:hover {
     background-color: #f9d5e1;
     cursor: pointer;
   }
 
-  .login-nav {
-    font-size: 1.15em;
-    background-color: rgb(235,251,255);
+  .logout {
+    
   }
 
   .modal {

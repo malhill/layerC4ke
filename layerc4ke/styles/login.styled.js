@@ -56,4 +56,12 @@ export const LoginStyles = styled.section`
     .close:hover {
         cursor: pointer;
     }
+
+    .error-message {
+        color: red;
+        font-size: 4em;
+        font-weight: bold;
+        text-align: center;
+        position: fixed;
+    }
 `;

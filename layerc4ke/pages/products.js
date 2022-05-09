@@ -27,6 +27,7 @@ export default function Products() {
       <Head>
         <title>Products - Layer C4ke</title>
       </Head>
+
       {/* Should load dummy data if database isn't connected */}
       <Card inventory={!data.getProducts[0] ? dummy : data.getProducts} />
     </CardStyles>
